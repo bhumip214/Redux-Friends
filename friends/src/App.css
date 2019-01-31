@@ -1,37 +1,58 @@
 .App {
   text-align: center;
-}
-
-.App-header {
   background-color: #282c34;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
 }
+.App-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(255, 188, 62);
+  padding: 0 40px;
+}
 
+.friend-list {
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 .friend {
-  border: 1px solid white;
+  border: 2px dotted white;
   margin-bottom: 10px;
+  width: 30%;
+  margin: 20px;
+}
+.friend-header {
+  display: flex;
+  justify-content: space-between;
 }
 .friend h3 {
   text-decoration-line: underline;
+  color: green;
+  flex: 1;
+  padding-left: 60px;
+}
+.action-icons {
+  padding: 5px;
+}
+.action-icons img {
+  margin-right: 5px;
 }
 .friend p {
   font-size: 16px;
+  margin-top: 5px;
 }
 
 .friends-form {
-  padding: 40px;
+  padding: 10px;
   background-color: lightgrey;
 }
 
 .friends-form h2 {
   font-size: 16px;
-  padding-bottom: 10px;
+  color: black;
   font-weight: bold;
 }
 
@@ -53,9 +74,12 @@
   margin: 5px auto;
   padding: 5px 10px;
   border-radius: 5px;
-  background-color: lightseagreen;
+  background-color: green;
+  font-weight: bold;
+  color: white;
 }
 .friends-form button:hover {
-  color: white;
+  background-color: rgb(255, 188, 62);
+
   cursor: pointer;
 }

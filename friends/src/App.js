@@ -1,60 +1,43 @@
 import React, { Component } from "react";
-import FriendsList from "./component/FriendsList";
-import FriendForm from "./component/FriendForm";
+import FriendsListView from "./views/FriendsListView";
+import FormView from "./views/FormView";
 import { connect } from "react-redux";
-import { getData } from "./actions";
+import { getData, addFriend } from "./store/actions";
 import "./App.css";
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      newfriend: {
-        id: Date.now(),
-        name: "",
-        age: "",
-        email: ""
-      }
+      isFormOpen: false
     };
   }
-  componentDidMount() {
-    this.props.getData();
-  }
-  handleChanges = e => {
-    console.log(e.target.value);
-    this.setState({ [e.target.name]: e.target.value });
-  };
-
-  addFriend = e => {
-    e.preventDefault();
-    this.props.addNewFriend(this.state.newFriend);
-  };
 
   render() {
+    if (this.props.fetching) {
+      return <span>Loading...</span>;
+    }
     return (
       <div className="App">
         <header className="App-header">
-          <h1>Friends List</h1>
-
-          <FriendsList friends={this.props.friends} />
-          <FriendForm
-            addFriend={this.addFriend}
-            handleChanges={this.handleChanges}
-            newfriend={this.state.newfriend}
-          />
+          <h1>FRIENDS </h1>
+          <div>
+            <img
+              onClick={() =>
+                this.setState({
+                  isFormOpen: !this.state.isFormOpen
+                })
+              }
+              src="https://img.icons8.com/color/48/000000/plus.png"
+              alt="Add Icon"
+            />
+          </div>
         </header>
+        {this.state.isFormOpen && <FormView friend={this.state.friend} />}
+        <FriendsListView />
       </div>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  friends: state.friendsReducer.friends,
-  error: state.friendsReducer.error,
-  fetching: state.friendsReducer.fetching
-});
-
-export default connect(
-  mapStateToProps,
-  { getData }
-)(App);
+export default App;
