@@ -12,6 +12,10 @@
   padding: 0 40px;
 }
 
+.add-icon {
+  cursor: pointer;
+}
+
 .friend-list {
   padding: 20px;
   display: flex;
@@ -34,12 +38,14 @@
   flex: 1;
   padding-left: 60px;
 }
-.action-icons {
+.action-icon {
   padding: 5px;
 }
-.action-icons img {
+.action-icon img {
   margin-right: 5px;
+  cursor: pointer;
 }
+
 .friend p {
   font-size: 16px;
   margin-top: 5px;

@@ -1,20 +1,20 @@
 import React from "react";
 import { connect } from "react-redux";
-
-import { getData } from "../store/actions";
-
+import { getData, deleteFriend } from "../store/actions";
 import FriendsList from "../component/FriendsList";
 
 class FriendsListView extends React.Component {
-  state = {
-    friends: []
-  };
-
   componentDidMount() {
     this.props.getData();
   }
 
+  deleteFriend = (e, id) => {
+    e.preventDefault();
+    this.props.deleteFriend(id);
+  };
+
   render() {
+    console.log(this.props);
     return (
       <FriendsList
         friends={this.props.friends}
@@ -32,5 +32,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getData }
+  { getData, deleteFriend }
 )(FriendsListView);
